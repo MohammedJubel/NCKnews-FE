@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./components/CSS/App.css";
 import Header from "./components/Header";
 import Articles from "./components/Articles";
 import * as api from "./api";
 import Navbar from "./components/Navbar";
+import { Router } from "@reach/router";
 
 class App extends Component {
   state = {
@@ -15,7 +16,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <Navbar topics={topics} />
-        <Articles />
+        {/* <Articles path="/" /> */}
+        <Router>
+          <Articles path={`/topics/:topic`} />
+        </Router>
       </div>
     );
   }
@@ -24,7 +28,7 @@ class App extends Component {
   };
   fetchTopics = () => {
     api.getTopics().then(topics => {
-      console.log(topics, "check");
+      // console.log(topics, "check");
       this.setState({ topics });
     });
   };

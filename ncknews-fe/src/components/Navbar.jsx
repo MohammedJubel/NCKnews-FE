@@ -1,19 +1,19 @@
 import React from "react";
+import { Link } from "@reach/router";
+import "./CSS/Navbar.css";
 
 function Navbar({ topics }) {
-  console.log(topics, "dfgfg");
   return (
-    <div>
+    <nav className="navbar">
       {topics.map(topic => {
-        return <nav key={topic.slug}>{topic.slug}</nav>;
+        return (
+          <Link to={`/topics/${topic.slug}`} key={topic.slug}>
+            <li>{topic.slug}</li>
+          </Link>
+        );
       })}
-    </div>
+    </nav>
   );
 }
 
 export default Navbar;
-
-// {
-//   topics.map(topic => {
-//     <div>{topic.slug}</div>;
-//   }}
