@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "./components/CSS/App.css";
-import Header from "./components/Header";
-import Articles from "./components/Articles";
 import * as api from "./api";
-import Navbar from "./components/Navbar";
 import { Router } from "@reach/router";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import Articles from "./components/Articles";
+import Article from "./components/Article";
 
 class App extends Component {
   state = {
@@ -16,9 +17,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <Navbar topics={topics} />
-        {/* <Articles path="/" /> */}
         <Router>
-          <Articles path={`/topics/:topic`} />
+          <Articles path="/" />
+          <Articles path="/topics/:topic" />
+          <Article path="/article/:article_id" />
         </Router>
       </div>
     );

@@ -8,25 +8,20 @@ export const getArticles = async () => {
 };
 
 export const getArticlesByTopic = async topic => {
-  const { data } = await axios.get(`${BASE_URL}/articles?topic=${topic}`);
+  const { data } = await axios.get(
+    `${BASE_URL}/articles?topic=${topic}&limit=100`
+  );
   return data;
 };
 
-// export const getTopics = async () => {
-//   const { data } = await axios.get(`${BASE_URL}/topics`);
-//   return data;
-// };
+export const getSingleArticle = async article_id => {
+  const { data } = await axios.get(`${BASE_URL}/articles/${article_id}`);
+  return data;
+};
+
 export const getTopics = async () => {
   return await axios.get(`${BASE_URL}/topics`).then(topics => {
-    console.log(topics, "<---topics");
+    // console.log(topics, "<---topics");
     return topics.data.topics;
   });
 };
-
-// export const getArticles = async topic => {
-//   const URL = topic
-//     ? `${BASE_URL}/articles?topic=${topic}`
-//     : `${BASE_URL}/articles?limit=100000`;
-//   const { data } = await axios.get(URL);
-//   return data;
-// };
