@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import Comments from "./Comments";
 // import { navigate } from "@reach/router";
 
 class Article extends Component {
@@ -8,12 +9,13 @@ class Article extends Component {
   };
 
   render() {
-    console.log(this.props, "<---props");
+    console.log(this.props.article_id, "<---props");
     const { article } = this.state;
     console.log(article, "<--article");
     return (
       <div>
-        {/* <p>{article.article_id}</p> */}
+        <Comments article_id={this.props.article_id} />
+        <p>{article.article_id}</p>
         <h1>{article.title}</h1>
         <p>Topic: {article.topic}</p>
         <p>{article.body}</p>

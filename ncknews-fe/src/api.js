@@ -25,3 +25,11 @@ export const getTopics = async () => {
     return topics.data.topics;
   });
 };
+
+export const getComments = async article_id => {
+  const { data } = await axios.get(
+    `${BASE_URL}/articles/${article_id}/comments`
+  );
+  console.log(data, "<-----data");
+  return data;
+};
