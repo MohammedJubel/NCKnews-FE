@@ -15,8 +15,8 @@ class App extends Component {
     const { topics } = this.state;
     return (
       <div className="App">
-        <Header />
         <Navbar topics={topics} />
+        <Header />
         <Router>
           <Articles path="/" />
           <Articles path="/topics/:topic" />

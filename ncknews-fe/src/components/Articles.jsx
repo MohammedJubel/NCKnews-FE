@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
-import "./CSS/Article.css";
+import "./CSS/Articles.css";
 import { Link } from "@reach/router";
 
 class Articles extends Component {
@@ -14,7 +14,7 @@ class Articles extends Component {
     // console.log(articles, "<-----articles");
     return (
       <div className="articleSection">
-        <h1>Articles</h1>
+        <p>Sort by</p>
         {/* <p>Total Articles = {`${articles.length}`}</p> */}
         <div>
           {articles.map(article => (
@@ -36,6 +36,10 @@ class Articles extends Component {
   }
 
   componentDidMount = () => {
+    // console.log("cdm");
+    this.fetchArticles();
+  };
+  componentDidUpdate = () => {
     // console.log("cdm");
     this.fetchArticles();
   };

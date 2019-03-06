@@ -1,6 +1,8 @@
 .articledata {
+  font-family: arial;
   background-color: rgb(255, 255, 255);
   border: 0.2em solid black;
   padding-bottom: 0.2em;
+  padding-top: auto;
   margin-bottom: 0.2em;
 }

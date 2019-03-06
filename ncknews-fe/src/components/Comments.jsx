@@ -16,7 +16,7 @@ export class Comments extends Component {
       <div>
         {comments.map(comment => {
           return (
-            <div>
+            <div className="comments">
               <p>{comment.author}</p>
               <p>{comment.body}</p>
             </div>
