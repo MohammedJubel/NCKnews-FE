@@ -27,9 +27,9 @@ function Navbar({ topics }) {
         <Link onClick={() => window.location.reload()} to="/article/post">
           <li>NEW POST</li>
         </Link>
-        <Link onClick={() => window.location.reload()} to="/">
-          <li className="post">LOGIN</li>
-        </Link>
+        {/* <Link onClick={() => window.location.reload()} to="/login"> */}
+        <li className="post">LOGIN</li>
+        {/* </Link> */}
       </ul>
     </nav>
   );

@@ -6,10 +6,13 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
+import NewArticle from "./components/NewArticle";
+import Auth from "./components/Auth";
 
 class App extends Component {
   state = {
-    topics: []
+    topics: [],
+    user: ""
   };
   render() {
     const { topics } = this.state;
@@ -21,18 +24,34 @@ class App extends Component {
           <Articles path="/" />
           <Articles path="/topics/:topic" />
           <Article path="/article/:article_id" />
+          <Auth
+            path="/login"
+            user={this.state.user}
+            login={this.setUserInState}
+          />
+          <NewArticle
+            path="/article
+              /post"
+          />
         </Router>
+        {/* </Auth> */}
       </div>
     );
   }
+
   componentDidMount = () => {
     this.fetchTopics();
   };
   fetchTopics = () => {
     api.getTopics().then(topics => {
-      // console.log(topics, "check");
       this.setState({ topics });
     });
+  };
+  setUserInState = username => {
+    api.getSingleUser(username).then(user => this.setState({ user }));
+  };
+  removeUserInState = () => {
+    this.setState({ user: "" });
   };
 }
 

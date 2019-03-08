@@ -1,0 +1,22 @@
+.comments {
+  font-family: arial;
+  background-color: rgb(235, 226, 226);
+  border: 0.2em solid black;
+  padding-bottom: auto;
+  padding-top: auto;
+  padding-left: 0.3em;
+  margin-bottom: 0.2em;
+}
+
+.commentForm {
+  font-family: fantasy;
+  font-style: italic;
+  background-color: rgb(146, 159, 233);
+  border: 0.2em solid black;
+  padding-bottom: auto;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 0.3em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}

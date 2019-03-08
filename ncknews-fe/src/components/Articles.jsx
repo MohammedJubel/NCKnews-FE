@@ -10,7 +10,6 @@ class Articles extends Component {
 
   render() {
     const { articles } = this.state;
-    console.log("rendering");
     // console.log(articles, "<-----articles");
     return (
       <div className="articleSection">
@@ -36,16 +35,15 @@ class Articles extends Component {
   }
 
   componentDidMount = () => {
-    // console.log("cdm");
     this.fetchArticles();
   };
-  componentDidUpdate = () => {
-    // console.log("cdm");
-    this.fetchArticles();
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps !== this.props) {
+      this.fetchArticles();
+    }
   };
   fetchArticles = () => {
     const { topic } = this.props;
-    // console.log(topic, "<------topic");
     if (topic) {
       return api
         .getArticlesByTopic(topic)
