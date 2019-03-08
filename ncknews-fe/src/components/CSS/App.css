@@ -28,7 +28,7 @@
   margin-block-end: 0%;
 }
 .articleSection {
-  background-color: yellow;
+  background-color: rgb(216, 216, 203);
   grid-area: article;
 }
 .footer {
