@@ -1,40 +1,14 @@
 import React, { Component } from "react";
-import { postArticle } from "../api";
-import { navigate } from "@reach/router";
 
-export class NewArticle extends Component {
-  state = {
-    newArticleTitle: "",
-    newArticleBody: ""
-  };
-
-  handleChange = text => {
-    this.setState({
-      newArticleTitle: text,
-      newArticleBody: text
-    });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    const newArticle = {
-      title: this.state.newArticleTitle,
-      body: this.state.newArticleBody,
-      author: "jessjelly",
-      topic: "coding"
-    };
-  };
-
+export default class NewArticle extends Component {
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <textarea onChange={event => this.handleChange(event.target.value)}>
-          Body
-        </textarea>
-        <button type="submit">Add Article</button>
-      </form>
+      <div>
+        <form>
+          Post Article
+          <input onChange={this.handleChange} type="textArea" />
+        </form>
+      </div>
     );
   }
 }
-
-export default NewArticle;

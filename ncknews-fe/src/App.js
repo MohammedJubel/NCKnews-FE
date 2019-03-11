@@ -12,7 +12,7 @@ import Auth from "./components/Auth";
 class App extends Component {
   state = {
     topics: [],
-    user: ""
+    user: "jessjelly"
   };
   render() {
     const { topics } = this.state;
@@ -23,17 +23,14 @@ class App extends Component {
         <Router>
           <Articles path="/" />
           <Articles path="/topics/:topic" />
-          <Article path="/article/:article_id" />
-          <Auth
+          <Article path="/article/:article_id" user={this.state.user} />
+          <NewArticle path="/post" />
+        </Router>
+        {/* <Auth
             path="/login"
             user={this.state.user}
             login={this.setUserInState}
-          />
-          <NewArticle
-            path="/article
-              /post"
-          />
-        </Router>
+          /> */}
         {/* </Auth> */}
       </div>
     );

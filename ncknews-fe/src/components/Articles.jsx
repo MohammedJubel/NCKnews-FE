@@ -10,7 +10,7 @@ class Articles extends Component {
 
   render() {
     const { articles } = this.state;
-    // console.log(articles, "<-----articles");
+
     return (
       <div className="articleSection">
         <p>Sort by</p>

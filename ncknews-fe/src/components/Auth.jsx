@@ -12,7 +12,7 @@ export default class Auth extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    console.log("clickeddddddd");
+    // console.log("clickeddddddd");
 
     this.props.login(this.state.username);
   };

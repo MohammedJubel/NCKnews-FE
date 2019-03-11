@@ -25,8 +25,8 @@ class Article extends Component {
           <p>Posted By: {article.author}</p>
         </div>
         <div>
-          <Voter votes={this.state.article.votes} id={this.state.article_id} />
-          <Comments article_id={this.props.article_id} />
+          <Voter votes={this.state.article.votes} id={this.state.articl_id} />
+          <Comments article_id={this.props.article_id} user={this.props.user} />
         </div>
       </div>
     );
