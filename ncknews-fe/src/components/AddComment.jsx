@@ -25,7 +25,7 @@ class AddComment extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className="commentForm">
+        <form onSubmit={this.handleSubmit}>
           Post Comment:
           <input onChange={this.handleChange} type="text" />
           <button>Submit</button>
@@ -39,7 +39,7 @@ export default AddComment;
 
 //FINDING NEW COMMENT TO POST
 // make form and submit button
-// need value of new comment to post --- onChange function for the (inputBox) then write function inside and write the function out i.e. handlechange
+// need value of new comment to post --- onChange function for the (inputBox/ textarea) then write function inside and write the function out i.e. handlechange
 // handlechange function has event.target.value which logs user input
 // once value registered need to set state with new comment --(set state at top)
 //^^React Dev tools to check state and getting right value(new Comment your posting)

@@ -14,6 +14,7 @@ export default class Voter extends Component {
         <button className="upvote" onClick={() => this.handleVote(1)}>
           Vote Up
         </button>
+
         <button className="downvote" onClick={() => this.handleVote(-1)}>
           Vote Down
         </button>

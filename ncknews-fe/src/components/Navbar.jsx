@@ -6,7 +6,7 @@ function Navbar({ topics }) {
   return (
     <nav className="navbar">
       <ul>
-        <Link onClick={() => window.location.reload()} to="/articles">
+        <Link onClick={() => window.location.reload()} to="/">
           <li>
             <b>NC NEWS</b>
           </li>
