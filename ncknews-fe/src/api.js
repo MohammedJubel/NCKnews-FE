@@ -44,6 +44,7 @@ export const postNewComment = async (article_id, commentToAdd) => {
 };
 
 export const postArticle = newArticle => {
+  console.log(newArticle, "api new Article");
   return axios
     .post(`${BASE_URL}/articles`, newArticle)
     .then(({ data }) => data.article);

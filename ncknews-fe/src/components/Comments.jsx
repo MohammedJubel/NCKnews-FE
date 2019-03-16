@@ -3,7 +3,6 @@ import * as api from "../api";
 import "./CSS/Comments.css";
 import AddComment from "./AddComment";
 import Voter from "./Voter";
-import { navigate } from "@reach/router";
 
 export class Comments extends Component {
   state = {
@@ -43,6 +42,7 @@ export class Comments extends Component {
             );
           })}
         </div>
+        ...
       </div>
     );
   }
@@ -70,3 +70,5 @@ export class Comments extends Component {
   };
 }
 export default Comments;
+
+//delete comments modify and have pop up when delete has been makde

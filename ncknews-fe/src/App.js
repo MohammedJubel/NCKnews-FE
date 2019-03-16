@@ -15,7 +15,8 @@ class App extends Component {
     user: "jessjelly"
   };
   render() {
-    const { topics } = this.state;
+    const { topics, user } = this.state;
+
     return (
       <div className="App">
         <Navbar topics={topics} />
@@ -23,8 +24,8 @@ class App extends Component {
         <Router>
           <Articles path="/" />
           <Articles path="/topics/:topic" />
-          <Article path="/article/:article_id" user={this.state.user} />
-          <NewArticle path="/post" />
+          <Article path="/article/:article_id" user={user} />
+          <NewArticle path="/post" user={user} topics={topics} />
         </Router>
         {/* <Auth
             path="/login"
