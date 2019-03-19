@@ -32,11 +32,13 @@ export class Comments extends Component {
                   <Voter />
                   <p>{comment.author}</p>
                   <p>{comment.body}</p>
-                  <button
-                    onClick={() => this.deleteComment(comment.comment_id)}
-                  >
-                    Delete
-                  </button>
+                  {user.username === comment.author && (
+                    <button
+                      onClick={() => this.deleteComment(comment.comment_id)}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
               </div>
             );

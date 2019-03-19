@@ -17,7 +17,7 @@ export default class NewArticle extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const newArticle = {
-      author: this.props.user,
+      author: this.props.user.username,
       body: this.state.newArticleBody,
       title: this.state.newArticleTitle,
       topic: this.state.newArticleTopic
@@ -36,6 +36,7 @@ export default class NewArticle extends Component {
         <form onSubmit={this.handleSubmit}>
           Topic
           <select onChange={this.handleChange} id="newArticleTopic">
+            <option disabled>Choose Option</option>
             {topics.map(topic => {
               return <option>{topic.slug}</option>;
             })}

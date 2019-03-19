@@ -18,6 +18,7 @@ export default class Auth extends Component {
   };
 
   render() {
+    if (this.props.user) return this.props.children;
     return (
       <div>
         <h3>Please Enter your Username to Login</h3>

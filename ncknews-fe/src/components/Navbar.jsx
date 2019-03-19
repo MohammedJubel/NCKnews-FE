@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "@reach/router";
 import "./CSS/Navbar.css";
 
-function Navbar({ topics }) {
+function Navbar({ topics, user, logout }) {
   return (
     <nav className="navbar">
       <ul>
-        <Link onClick={() => window.location.reload()} to="/">
+        <Link to="/">
           <li>
             <b>NC NEWS</b>
           </li>
@@ -24,12 +24,17 @@ function Navbar({ topics }) {
             })}
           </ul>
         </li>
-        <Link onClick={() => window.location.reload()} to="/post">
+        <Link to="/post">
           <li>NEW POST</li>
         </Link>
-        {/* <Link onClick={() => window.location.reload()} to="/login"> */}
-        <li className="post">LOGIN</li>
-        {/* </Link> */}
+        {user.username && (
+          <div>
+            <li>{`Welcome ${user.username}`}</li>
+            <li onClick={logout} className="post">
+              LogOut
+            </li>
+          </div>
+        )}
       </ul>
     </nav>
   );

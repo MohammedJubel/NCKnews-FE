@@ -12,27 +12,23 @@ import Auth from "./components/Auth";
 class App extends Component {
   state = {
     topics: [],
-    user: "jessjelly"
+    user: ""
   };
   render() {
     const { topics, user } = this.state;
 
     return (
       <div className="App">
-        <Navbar topics={topics} />
+        <Navbar topics={topics} user={user} logout={this.removeUserInState} />
         <Header />
-        <Router>
-          <Articles path="/" />
-          <Articles path="/topics/:topic" />
-          <Article path="/article/:article_id" user={user} />
-          <NewArticle path="/post" user={user} topics={topics} />
-        </Router>
-        {/* <Auth
-            path="/login"
-            user={this.state.user}
-            login={this.setUserInState}
-          /> */}
-        {/* </Auth> */}
+        <Auth path="/login" user={this.state.user} login={this.setUserInState}>
+          <Router>
+            <Articles path="/" />
+            <Articles path="/topics/:topic" />
+            <Article path="/article/:article_id" user={user} />
+            <NewArticle path="/post" user={user} topics={topics} />
+          </Router>
+        </Auth>
       </div>
     );
   }

@@ -52,7 +52,7 @@ export const postArticle = newArticle => {
 
 export const getSingleUser = async username => {
   const { data } = await axios.get(`${BASE_URL}/users/${username}`);
-  return data;
+  return data.user;
 };
 
 export const handleVote = votes => {

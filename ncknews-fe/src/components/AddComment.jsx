@@ -14,7 +14,7 @@ class AddComment extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const commentToAdd = {
-      author: this.props.user,
+      author: this.props.user.username,
       body: this.state.newComment
     };
 
