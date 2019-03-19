@@ -14,9 +14,9 @@ export const getArticlesByTopic = async topic => {
   return data;
 };
 
-export const getSingleArticle = async article_id => {
+export const getArticleById = async article_id => {
   const { data } = await axios.get(`${BASE_URL}/articles/${article_id}`);
-  return data;
+  return data.article;
 };
 
 export const getTopics = async () => {

@@ -7,12 +7,11 @@ function Navbar({ topics, user, logout }) {
     <nav className="navbar">
       <ul>
         <Link to="/">
-          <li>
-            <b>NC NEWS</b>
-          </li>
+          <li>NC NEWS</li>
         </Link>
 
         <li>
+          {" "}
           PICK TOPIC
           <ul className="dropDown">
             {topics.map(topic => {
@@ -31,7 +30,7 @@ function Navbar({ topics, user, logout }) {
           <div>
             <li>{`Welcome ${user.username}`}</li>
             <li onClick={logout} className="post">
-              LogOut
+              <label>LogOut</label>
             </li>
           </div>
         )}
