@@ -5,7 +5,9 @@ import { Link } from "@reach/router";
 
 class Articles extends Component {
   state = {
-    articles: []
+    articles: [],
+
+    isLoading: true
   };
 
   render() {
@@ -13,7 +15,15 @@ class Articles extends Component {
 
     return (
       <div className="articleSection">
-        <p>Sort by</p>
+        <div className="optionBar">
+          <p>Sort by</p>
+          <select>
+            <option value="Date">Date</option>
+            <option value="Date">Date</option>
+            <option value="Date">Date</option>
+          </select>
+        </div>
+
         {/* <p>Total Articles = {`${articles.length}`}</p> */}
         <div>
           {articles.map(article => (
@@ -50,7 +60,7 @@ class Articles extends Component {
         .then(articles => this.setState(articles));
     } else {
       return api.getArticles().then(articles => {
-        this.setState(articles);
+        this.setState({ articles, isLoading: false });
       });
     }
   };

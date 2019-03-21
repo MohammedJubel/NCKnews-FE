@@ -40,7 +40,12 @@ export default class NewArticle extends Component {
           <option />
         </select>
         <label>Title</label>
-        <input onChange={this.handleChange} id="newArticleTitle" type="text" />
+        <input
+          onChange={this.handleChange}
+          id="newArticleTitle"
+          type="text"
+          required
+        />
         <br />
         <br />
         <label>Post New Article Body:</label>
@@ -50,6 +55,7 @@ export default class NewArticle extends Component {
           onChange={this.handleChange}
           id="newArticleBody"
           type="text"
+          required
         />
         <br />
         <button>Submit</button>

@@ -5,9 +5,10 @@
   height: auto;
   display: grid;
   grid-template-areas:
-    "nav nav"
-    "article article"
-    "footer footer";
+    "nav "
+    "banner"
+    "article"
+    "footer";
   grid-template-rows: 80px 50px 1fr 70px;
   grid-template-columns: 1fr;
   grid-row-gap: 10px;

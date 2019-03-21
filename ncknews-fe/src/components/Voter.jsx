@@ -22,3 +22,8 @@ export default class Voter extends Component {
     );
   }
 }
+
+//track vote change and keep in state
+// disable button if vote change is 1
+// disable button if vote change is -1
+// votes: {votes + votes change}

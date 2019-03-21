@@ -24,7 +24,12 @@ export default class Auth extends Component {
         <h3>Please Enter your Username to Login</h3>
         <form onSubmit={this.onSubmit}>
           <label>Username:</label>
-          <input onChange={this.handleChange} type="text" name="username" />
+          <input
+            onChange={this.handleChange}
+            type="text"
+            name="username"
+            required
+          />
           <button>Login</button>
         </form>
       </div>
