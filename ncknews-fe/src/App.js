@@ -19,8 +19,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navbar topics={topics} user={user} logout={this.removeUserInState} />
         {/* <Header /> */}
+        <Navbar topics={topics} user={user} logout={this.removeUserInState} />
+
         <Auth path="/login" user={this.state.user} login={this.setUserInState}>
           <Router>
             <Articles path="/" />

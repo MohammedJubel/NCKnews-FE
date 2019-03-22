@@ -23,22 +23,31 @@ export class Comments extends Component {
             article_id={article_id}
             commentUpdate={this.newCommentUpdater}
           />
+          <br />
         </div>
         <div>
           {comments.map(comment => {
             return (
-              <div>
-                <div className="comments">
-                  <Voter commentId={comment.comment_id} votes={comment.votes} />
-                  <p>{comment.author}</p>
-                  <p>{comment.body}</p>
+              <div className="comments">
+                <div key={comment.comment_id}>
+                  <b>
+                    {comment.author}
+                    <br />
+                  </b>
+                  <small>
+                    {comment.created_at.substring(0, 10)}
+                    <br />
+                  </small>
+
                   {user.username === comment.author && (
                     <button
                       onClick={() => this.deleteComment(comment.comment_id)}
                     >
-                      Delete
+                      <b>Delete Comment?</b>
                     </button>
                   )}
+                  <p>{comment.body}</p>
+                  <Voter commentId={comment.comment_id} votes={comment.votes} />
                 </div>
               </div>
             );
@@ -63,7 +72,7 @@ export class Comments extends Component {
     });
   };
   deleteComment = comment_id => {
-    api.deleteCommentById(comment_id).then(res => {
+    api.deleteCommentById(comment_id).then(() => {
       const updatedComments = this.state.comments.filter(comment => {
         if (comment.comment_id !== comment_id) return comment;
       });
@@ -72,5 +81,3 @@ export class Comments extends Component {
   };
 }
 export default Comments;
-
-//delete comments modify and have pop up when delete has been makde

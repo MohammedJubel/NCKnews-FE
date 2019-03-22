@@ -23,7 +23,6 @@ export const getArticleById = async article_id => {
 
 export const getTopics = async () => {
   return await axios.get(`${BASE_URL}/topics`).then(topics => {
-    // console.log(topics, "<---topics");
     return topics.data.topics;
   });
 };
@@ -41,7 +40,6 @@ export const postNewComment = async (article_id, commentToAdd) => {
     `${BASE_URL}/articles/${article_id}/comments`,
     commentToAdd
   );
-  console.log(data, "data");
   return data.comment;
 };
 
@@ -58,8 +56,11 @@ export const getSingleUser = async username => {
 };
 
 export const deleteCommentById = comment_id => {
-  console.log(comment_id, "comment Id");
   return axios.delete(`${BASE_URL}/comments/${comment_id}`);
+};
+
+export const deleteArticleById = article_id => {
+  return axios.delete(`${BASE_URL}/articles/${article_id}`);
 };
 
 export const voteOnItem = async (comment_id, article_id, voteChange) => {

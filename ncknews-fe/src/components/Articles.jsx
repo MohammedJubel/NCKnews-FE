@@ -31,11 +31,17 @@ class Articles extends Component {
               key={article.article_id}
             >
               <div key={article.article_id} className="articledata">
+                <div>
+                  <b>Title: {article.title}</b>
+                </div>
                 <div>Topic: {article.topic}</div>
-                <div>Title: {article.title}</div>
+
                 <div>Author: {article.author}</div>
                 <div>Created At: {article.created_at.substring(0, 10)}</div>
-              </div>{" "}
+                <div>
+                  <b>Votes:</b> {article.votes}
+                </div>
+              </div>
             </Link>
           ))}
         </div>

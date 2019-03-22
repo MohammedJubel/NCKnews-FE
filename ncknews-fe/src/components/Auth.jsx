@@ -6,13 +6,11 @@ export default class Auth extends Component {
   };
 
   handleChange = event => {
-    console.log(event.target.value);
     this.setState({ username: event.target.value });
   };
 
   onSubmit = event => {
     event.preventDefault();
-    // console.log("clickeddddddd");
 
     this.props.login(this.state.username);
   };
@@ -31,6 +29,7 @@ export default class Auth extends Component {
             required
           />
           <button>Login</button>
+          <p>Please login with 'jessjelly' for demo purposes</p>
         </form>
       </div>
     );

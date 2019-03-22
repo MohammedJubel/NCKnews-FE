@@ -14,14 +14,6 @@ export default class Voter extends Component {
     );
   };
 
-  // this.props.commentId
-
-  // press button > handlevote() with parameter + 1 or -1 then make api request and update article inc vote with voteChange (1 or -1)> then get updated result from article
-
-  //go on each componenet article or comments pass function as a prop which makes a api request and make general function up here
-
-  // this.updateprops
-
   render() {
     return (
       <div>
@@ -44,8 +36,3 @@ export default class Voter extends Component {
     );
   }
 }
-
-//track vote change and keep in state
-// disable button if vote change is 1
-// disable button if vote change is -1
-// votes: {votes + votes change}
