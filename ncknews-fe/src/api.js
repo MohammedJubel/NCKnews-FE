@@ -2,8 +2,10 @@ import axios from "axios";
 
 const BASE_URL = "https://nc-knews-mohammedjubel.herokuapp.com/api";
 
-export const getArticles = async () => {
-  const { data } = await axios.get(`${BASE_URL}/articles?limit=100000`);
+export const getArticles = async sort_by => {
+  const { data } = await axios.get(
+    `${BASE_URL}/articles?limit=100000&sort_by=${sort_by}`
+  );
   return data;
 };
 
@@ -55,23 +57,27 @@ export const getSingleUser = async username => {
   return data.user;
 };
 
-export const handleVote = votes => {
-  axios.patch(
-    `https://nc-knews-mohammedjubel.herokuapp.com/api/articles/${
-      this.props.id
-    }`,
-    { inc_votes: votes }
-  );
-};
-
 export const deleteCommentById = comment_id => {
   console.log(comment_id, "comment Id");
   return axios.delete(`${BASE_URL}/comments/${comment_id}`);
 };
 
-export const voteOnArticle = async (article_id, voteChange) => {
-  const { data } = await axios.patch(`${BASE_URL}/articles/${article_id}`, {
+export const voteOnItem = async (comment_id, article_id, voteChange) => {
+  console.log(comment_id, "comment_id");
+  const URL = comment_id
+    ? `${BASE_URL}/comments/${comment_id}`
+    : `${BASE_URL}/articles/${article_id}`;
+  const { data } = await axios.patch(URL, {
     inc_votes: voteChange
   });
   return data.article;
 };
+
+// export const voteOnComment = async (comment_id, voteChange) => {
+//   const { data } = await axios
+//     .patch(`${BASE_URL}/comments/${comment_id}`, {
+//       inc_votes: voteChange
+//     })
+//     .catch(console.dir);
+//   return data.comment;
+// };

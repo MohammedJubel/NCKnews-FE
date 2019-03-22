@@ -24,15 +24,6 @@ function Navbar({ topics, user, logout }) {
           </ul>
         </li>
 
-        <li>
-          SORT
-          <ul className="dropDown">
-            <li>Date</li>
-            <li>Comments</li>
-            <li>Votes</li>
-          </ul>
-        </li>
-
         <Link to="/post">
           <li>NEW POST</li>
         </Link>

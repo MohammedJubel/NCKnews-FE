@@ -29,7 +29,7 @@ export class Comments extends Component {
             return (
               <div>
                 <div className="comments">
-                  <Voter />
+                  <Voter commentId={comment.comment_id} votes={comment.votes} />
                   <p>{comment.author}</p>
                   <p>{comment.body}</p>
                   {user.username === comment.author && (

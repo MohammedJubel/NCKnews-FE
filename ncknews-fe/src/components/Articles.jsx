@@ -6,7 +6,6 @@ import { Link } from "@reach/router";
 class Articles extends Component {
   state = {
     articles: [],
-
     isLoading: true
   };
 
@@ -17,14 +16,14 @@ class Articles extends Component {
       <div className="articleSection">
         <div className="optionBar">
           <p>Sort by</p>
-          <select>
-            <option value="Date">Date</option>
-            <option value="Date">Date</option>
-            <option value="Date">Date</option>
+          <select onChange={this.handleChange}>
+            <option value="created_at">Dates</option>
+            <option value="votes">Votes</option>
+            <option value="comment_count">Comments</option>
           </select>
         </div>
 
-        {/* <p>Total Articles = {`${articles.length}`}</p> */}
+        <p>Total Articles = {`${articles.length}`}</p>
         <div>
           {articles.map(article => (
             <Link
@@ -52,15 +51,22 @@ class Articles extends Component {
       this.fetchArticles();
     }
   };
-  fetchArticles = () => {
+  handleChange = event => {
+    this.fetchArticles(event.target.value);
+  };
+
+  fetchArticles = sort_by => {
+    if (!sort_by) {
+      sort_by = "created_at";
+    }
     const { topic } = this.props;
     if (topic) {
       return api
         .getArticlesByTopic(topic)
         .then(articles => this.setState(articles));
     } else {
-      return api.getArticles().then(articles => {
-        this.setState({ articles, isLoading: false });
+      return api.getArticles(sort_by).then(articles => {
+        this.setState(articles);
       });
     }
   };
