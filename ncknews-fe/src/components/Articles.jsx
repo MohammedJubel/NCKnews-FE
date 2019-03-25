@@ -13,7 +13,7 @@ class Articles extends Component {
     const { articles } = this.state;
 
     return (
-      <div className="articleSection">
+      <div>
         <div className="optionBar">
           <p>Sort by</p>
           <select onChange={this.handleChange}>

@@ -4,7 +4,7 @@ import "./CSS/Navbar.css";
 
 function Navbar({ topics, user, logout }) {
   return (
-    <nav className="navbar">
+    <nav id ='pageHeader' className="navbar">
       <ul>
         <Link to="/">
           <li>NC NEWS</li>
