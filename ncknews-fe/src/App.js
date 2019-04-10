@@ -2,31 +2,32 @@ import React, { Component } from "react";
 import "./components/CSS/App.css";
 import * as api from "./api";
 import { Router } from "@reach/router";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
 import NewArticle from "./components/NewArticle";
 import Auth from "./components/Auth";
+import Navigation from "./components/Navigation";
+import ls from "local-storage";
 
 class App extends Component {
   state = {
     topics: [],
-    user: ""
+    user: ls.get("user") || "",
+    avatar: "",
+    users: {}
   };
   render() {
-    const { topics, user } = this.state;
+    console.log(this.state.avatar);
+    const { topics, user, avatar } = this.state;
 
     return (
       <div className="App">
-        {/* <Header /> */}
-        <Navbar
-          id="pageHeader"
+        <Navigation
           topics={topics}
           user={user}
           logout={this.removeUserInState}
+          avatar={avatar}
         />
-
         <Auth path="/login" user={this.state.user} login={this.setUserInState}>
           <Router id="main">
             <Articles path="/" />
@@ -41,18 +42,32 @@ class App extends Component {
 
   componentDidMount = () => {
     this.fetchTopics();
+    this.fetchAllUsers();
   };
+
   fetchTopics = () => {
     api.getTopics().then(topics => {
       this.setState({ topics });
     });
   };
+
+  fetchAllUsers = () => {
+    api.getAllUsers().then(users => {
+      this.setState({ users });
+    });
+  };
   setUserInState = username => {
-    api.getSingleUser(username).then(user => this.setState({ user }));
+    api
+      .getSingleUser(username)
+      .then(user => this.setState({ user: username, avatar: user.avatar_url }));
+    ls.set("user", username);
   };
   removeUserInState = () => {
     this.setState({ user: "" });
+    ls.clear();
   };
 }
 
 export default App;
+
+// {username: "jessjelly", avatar_url: "https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg", name: "Jess Jelly"}
