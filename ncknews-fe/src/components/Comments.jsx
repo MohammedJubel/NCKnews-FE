@@ -3,18 +3,20 @@ import * as api from "../api";
 import "./CSS/Comments.css";
 import AddComment from "./AddComment";
 import Voter from "./Voter";
+import Loading from "./Loading";
 
 export class Comments extends Component {
   state = {
-    comments: []
+    comments: [],
+    isLoading: true
   };
 
   render() {
     const { comments } = this.state;
     const { article_id, user } = this.props;
+    if (this.state.isLoading) return <Loading />;
     // console.log(article_id, "check");
-
-    console.log(comments, "<---comments");
+    // console.log(comments, "<---comments");
     return (
       <div>
         <div>
@@ -39,7 +41,7 @@ export class Comments extends Component {
                     <br />
                   </small>
 
-                  {user.username === comment.author && (
+                  {user === comment.author && (
                     <button
                       onClick={() => this.deleteComment(comment.comment_id)}
                     >
@@ -53,7 +55,6 @@ export class Comments extends Component {
             );
           })}
         </div>
-        ...
       </div>
     );
   }
@@ -64,7 +65,9 @@ export class Comments extends Component {
 
   fetchComments = () => {
     const { article_id } = this.props;
-    api.getComments(article_id).then(comments => this.setState(comments));
+    api
+      .getComments(article_id)
+      .then(comments => this.setState({ comments, isLoading: false }));
   };
   newCommentUpdater = newComment => {
     this.setState(state => {
