@@ -1,0 +1,15 @@
+.my_image {
+  max-width: 175px;
+  max-height: 155px;
+}
+
+.articleborder {
+  font-family: arial;
+  background-color: white;
+  border: 0.1em solid rgb(82, 80, 80);
+  padding-bottom: 0.2em;
+  padding-top: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-shadow: 3px 3px grey;
+}

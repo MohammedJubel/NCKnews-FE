@@ -1,18 +1,19 @@
 .comments {
   font-family: arial;
-  background-color: rgb(235, 226, 226);
-  border: 0.2em solid black;
-  padding-bottom: auto;
+  background-color: white;
+  border: 0.1em solid rgb(82, 80, 80);
+  padding-bottom: 5px;
   padding-top: auto;
   padding-left: 0.3em;
-  margin-bottom: 0.2em;
+  margin-bottom: 10px;
+  box-shadow: 3px 3px grey;
 }
 
 .commentForm {
   font-family: fantasy;
   font-style: italic;
   background-color: rgb(146, 159, 233);
-  border: 0.2em solid black;
+  border: 0.1em solid rgb(82, 80, 80);
   padding-bottom: auto;
   padding-top: 1em;
   padding-bottom: 1em;
