@@ -18,7 +18,7 @@ export default class Auth extends Component {
   render() {
     if (this.props.user) return this.props.children;
     return (
-      <div id="main">
+      <div id="Auth">
         <h3>Please Enter your Username to Login</h3>
         <form onSubmit={this.onSubmit}>
           <label>Username:</label>
