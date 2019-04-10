@@ -1,49 +1,35 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import "./CSS/Articles.css";
-import { Link } from "@reach/router";
+// import { Link } from "@reach/router";
+// import Menubar from "../Menubar";
+import MediaCard from "./Mediacard";
+// import faker from "faker";
+import Loading from "./Loading";
 
 class Articles extends Component {
   state = {
-    articles: [],
+    articles: {},
     isLoading: true
   };
 
   render() {
-    const { articles } = this.state;
-
+    console.log(this.state.articles, "this");
+    if (this.state.isLoading) return <Loading />;
     return (
       <div>
-        <div className="optionBar">
-          <p>Sort by</p>
+        <div className="sortBy">
           <select onChange={this.handleChange}>
+            <option disabled selected>
+              Sort By
+            </option>
             <option value="created_at">Dates</option>
             <option value="votes">Votes</option>
             <option value="comment_count">Comments</option>
           </select>
         </div>
-
-        <p>Total Articles = {`${articles.length}`}</p>
-        <div>
-          {articles.map(article => (
-            <Link
-              to={`/article/${article.article_id}`}
-              key={article.article_id}
-            >
-              <div key={article.article_id} className="articledata">
-                <div>
-                  <b>Title: {article.title}</b>
-                </div>
-                <div>Topic: {article.topic}</div>
-
-                <div>Author: {article.author}</div>
-                <div>Created At: {article.created_at.substring(0, 10)}</div>
-                <div>
-                  <b>Votes:</b> {article.votes}
-                </div>
-              </div>
-            </Link>
-          ))}
+        <div id="articlesPage">
+          <MediaCard className="articledata" articles={this.state.articles} />
         </div>
       </div>
     );
@@ -62,6 +48,7 @@ class Articles extends Component {
   };
 
   fetchArticles = sort_by => {
+    this.setState({ isLoading: true });
     if (!sort_by) {
       sort_by = "created_at";
     }
@@ -69,10 +56,11 @@ class Articles extends Component {
     if (topic) {
       return api
         .getArticlesByTopic(topic)
-        .then(articles => this.setState(articles));
+        .then(articles => this.setState({ articles, isLoading: false }))
+        .catch();
     } else {
       return api.getArticles(sort_by).then(articles => {
-        this.setState(articles);
+        this.setState({ articles, isLoading: false });
       });
     }
   };
